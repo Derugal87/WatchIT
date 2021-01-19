@@ -1,0 +1,18 @@
+{% extends "film/base.html" %}
+{% block content %}
+<p style="font-size:30px; color:black" align="center"></p><pre></pre>
+<p style="font-size:30px; color:black"><b>Popular films</b></p><pre></pre>
+{% for show in shows %}
+<div class="card" style="width: 10rem; display:inline-block; background-color: #faf6f6; border: black">
+        <img class="card-img-top" src={{show.image}}>
+        <div class="card-body" style="border: black">
+        <p class="card-title" style="color: green"><center><h6><a href="/show/{{show.showid}}">{{show.name}}</a></h6></center>
+        </div>
+  </div>
+{% endfor %}
+<pre></pre>
+{% if not user.is_authenticated %}
+<div style="font-size:15px; padding-top:10px; color:black"><p>Want to add films to your list - <a href="/login">sign in</a>
+    or <a href="/register">register</a> </p></div>
+{% endif %}
+{% endblock content %}

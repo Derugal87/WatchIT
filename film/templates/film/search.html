@@ -1,0 +1,29 @@
+{% extends "film/base.html" %}
+{% block content %}
+{% if results %}
+    <pre></pre>
+<p style="font-size:30px; color:black">Results for <b>{{query}}</b></p>
+    <pre></pre>
+    {% for result in results %}
+        <article>
+        <hr>
+          <div>
+         <div class="media-left">
+             <a href="/show/{{result.show.id}}">
+        <img style="padding: 0px 4px" src= {{result.show.image.original}} class="media-object" width="180" height="240">
+             </a>
+    </div>
+    <div class="media-body">
+        <a href="/show/{{result.show.id}}"><h2 style="padding: 2px 2px; color:white">{{result.show.name}}</h2> </a>
+        <p style="padding: 12px 5px; color:black;"> {{result.show.summary}}</p>
+    </div>
+  </div>
+        </article>
+    {% endfor %}
+{% else %}
+{% if query %}
+<p style="font-size:30px">No results for <b>{{query}}</b>! :(</p>
+{% endif %}
+{% endif %}
+
+{% endblock content %}
